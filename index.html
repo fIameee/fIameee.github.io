@@ -3,238 +3,345 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f6f9fc">
+<meta name="theme-color" content="#f4f1ff">
 <title>Рыба моя — заказ</title>
 <style>
 :root{
-  --navy:#0a2540; --indigo:#635bff; --lilac:#a9a5ff; --paper:#f6f9fc;
-  --muted:#64748d; --line:#e7ecf3; --soft:#eef2f8; --green:#0e9f6e;
-  --shadow:0 18px 50px -22px rgba(10,37,64,.35);
+  --ink:#101828; --navy:#0a2540; --muted:#667085; --line:#e9e7f2;
+  --paper:#ffffff; --soft:#f6f4ff; --soft2:#f5f7fb;
+  --violet:#6c5ce7; --violet2:#8b7cff; --lav:#eeeaff;
+  --green:#0e9f6e; --greenbg:#e8f8f1; --blue:#2e90fa; --bluebg:#eaf4ff;
+  --shadow:0 20px 50px -28px rgba(16,24,40,.35);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0;background:#e9eef5;color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Geist","Inter",system-ui,sans-serif}
+html,body{margin:0;padding:0;background:#e9e6f7;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Geist","Inter",system-ui,sans-serif}
 body{min-height:100vh}
 button,input{font:inherit;color:inherit}
 button{border:0;background:none;cursor:pointer}
-.app{position:relative;width:100%;max-width:480px;min-height:100vh;margin:0 auto;background:var(--paper);overflow:hidden;box-shadow:0 0 0 1px rgba(10,37,64,.04),0 30px 90px -40px rgba(10,37,64,.4)}
-@media(min-width:560px){.app{margin:22px auto;min-height:calc(100vh - 44px);border-radius:34px}}
-@media(max-width:380px){.live{font-size:0;padding:8px;gap:0}.live i{width:7px;height:7px}.brand{font-size:15px}.sub{font-size:11px}h1{font-size:27px}}
-@media(max-width:430px){.grid{gap:9px;padding:4px 14px 126px}.card{grid-template-columns:104px minmax(0,1fr);min-height:106px}.art{min-height:106px}.name{font-size:12.5px}.price{font-size:15px}.add{width:30px;height:30px}.live{padding:6px 8px;font-size:10px}.cats{padding-left:14px;padding-right:14px}.meta{padding-left:14px;padding-right:14px}}
-.pad{padding:0 18px}
-header{padding:18px 18px 0}
-.top{display:flex;align-items:center;gap:11px}
-.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#80e9ff,#635bff 55%,#a960ee);display:grid;place-items:center;box-shadow:0 8px 18px -8px rgba(99,91,255,.65);flex:0 0 auto}
-.brand{font-size:16px;font-weight:650;letter-spacing:-.02em;line-height:1.1}
-.sub{font-size:12px;color:var(--muted);margin-top:3px}
-.live{margin-left:auto;display:flex;align-items:center;gap:6px;background:#e9f8f1;color:#087a54;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:600;white-space:nowrap;flex:0 0 auto}
-.live i{width:6px;height:6px;border-radius:50%;background:#10b981;display:block;box-shadow:0 0 0 3px rgba(16,185,129,.14)}
-h1{font-size:29px;line-height:1.08;letter-spacing:-.045em;font-weight:640;margin:22px 0 8px;max-width:330px}
-.lead{font-size:13px;line-height:1.45;color:var(--muted);margin:0 0 16px;max-width:350px}
-.search{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 13px;box-shadow:0 8px 20px -16px rgba(10,37,64,.35)}
-.search svg{color:#8a97a8;flex:0 0 auto}
-.search input{border:0;outline:0;background:transparent;width:100%;font-size:14px}
-.search input::placeholder{color:#98a4b4}
-.cats{display:flex;gap:8px;overflow:auto;padding:14px 18px 4px;scrollbar-width:none}
+img{display:block}
+.app{position:relative;width:100%;max-width:480px;min-height:100vh;margin:0 auto;background:var(--paper);overflow:hidden;box-shadow:0 0 0 1px rgba(16,24,40,.04),0 40px 100px -50px rgba(16,24,40,.55)}
+@media(min-width:560px){.app{margin:20px auto;min-height:calc(100vh - 40px);border-radius:30px}}
+.screen{display:none;padding-bottom:96px}
+.screen.on{display:block}
+.wrap{padding:0 16px}
+/* brand */
+.brandhead{padding:16px 16px 0}
+.brandtop{display:flex;align-items:center;gap:10px}
+.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#8b7cff,#5b4bd6);display:grid;place-items:center;box-shadow:0 10px 22px -12px rgba(108,92,231,.8);flex:0 0 auto}
+.brand{font-size:17px;font-weight:720;letter-spacing:-.035em;line-height:1.1}
+.sub{font-size:11.5px;color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.status{margin-left:auto;display:flex;align-items:center;gap:5px;background:var(--greenbg);color:#087a54;border-radius:99px;padding:7px 9px;font-size:10.5px;font-weight:650;white-space:nowrap;flex:0 0 auto}
+.status i{width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.15)}
+h1{font-size:29px;line-height:1.03;letter-spacing:-.05em;font-weight:760;margin:22px 0 8px;max-width:320px}
+.lead{font-size:12.5px;line-height:1.45;color:var(--muted);margin:0 0 15px;max-width:350px}
+.search{display:flex;align-items:center;gap:9px;background:var(--soft2);border:1px solid transparent;border-radius:13px;padding:11px 12px;transition:.2s}
+.search:focus-within{background:#fff;border-color:#d8d3f5;box-shadow:0 0 0 3px rgba(108,92,231,.08)}
+.search svg{color:#98a2b3;flex:0 0 auto}
+.search input{border:0;outline:0;background:transparent;width:100%;font-size:13.5px}
+.search input::placeholder{color:#98a2b3}
+.cats{display:flex;gap:7px;overflow:auto;padding:13px 16px 3px;scrollbar-width:none}
 .cats::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:#4b5b70;border-radius:999px;padding:9px 13px;font-size:12px;font-weight:550;white-space:nowrap;transition:.18s}
-.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
-.meta{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 8px;color:var(--muted);font-size:12px}
-.meta b{color:var(--navy);font-weight:700}
-.grid{display:flex;flex-direction:column;gap:10px;padding:4px 18px 130px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 24px -20px rgba(10,37,64,.35);display:grid;grid-template-columns:116px minmax(0,1fr);min-height:114px}
-.art{position:relative;height:100%;min-height:114px;display:grid;place-items:center;overflow:hidden}
-.art:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 25% 20%,rgba(255,255,255,.75),transparent 45%)}
-.art svg{position:relative;z-index:1;width:74px;height:50px;filter:drop-shadow(0 8px 8px rgba(10,37,64,.12))}
-.num{position:absolute;left:8px;top:8px;z-index:2;background:rgba(255,255,255,.82);backdrop-filter:blur(4px);border-radius:8px;padding:3px 7px;font-size:10px;font-weight:700;color:#46566c}
-.pack{position:absolute;right:8px;top:8px;z-index:2;background:rgba(10,37,64,.72);color:#fff;border-radius:8px;padding:3px 7px;font-size:9.5px;font-weight:600;white-space:nowrap}
-.body{padding:12px 13px 11px;display:flex;flex-direction:column;min-width:0}
-.name{font-size:13px;line-height:1.3;font-weight:600;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:6px;margin-top:auto;padding-top:9px}
-.price{font-size:16px;font-weight:750;letter-spacing:-.03em;line-height:1}
-.price span{font-size:10px;font-weight:500;color:var(--muted);margin-left:2px;letter-spacing:0}
-.add{width:32px;height:32px;border-radius:11px;background:var(--paper);color:var(--navy);display:grid;place-items:center;font-size:20px;font-weight:400;border:1px solid var(--line);transition:.15s}
-.add:active{transform:scale(.94)}
-.add.on{background:var(--indigo);border-color:var(--indigo);color:#fff}
-.stepper{display:flex;align-items:center;gap:5px;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:3px}
-.stepper button{width:24px;height:24px;display:grid;place-items:center;font-size:16px;color:var(--navy)}
-.stepper b{font-size:12px;min-width:14px;text-align:center}
-.empty{padding:50px 20px;text-align:center;color:var(--muted);font-size:13px}
-.more{margin:4px auto 0;padding:11px 18px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:12px;font-weight:600;color:#40516a}
-.cartbar{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:calc(100% - 28px);max-width:452px;background:var(--navy);color:#fff;border-radius:18px;padding:11px 12px 11px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 22px 45px -15px rgba(10,37,64,.55);transition:.22s}
-.cartbar.hide{transform:translate(-50%,120%);opacity:0;pointer-events:none}
-.cartbar .count{width:30px;height:30px;border-radius:10px;background:rgba(255,255,255,.13);display:grid;place-items:center;font-size:12px;font-weight:700}
-.cartbar .t{font-size:11.5px;color:#c8d3e2;line-height:1.15}
-.cartbar .t b{display:block;color:#fff;font-size:13px;font-weight:650;margin-top:2px}
-.cartbar .go{margin-left:auto;background:#fff;color:var(--navy);border-radius:12px;padding:10px 15px;font-size:12.5px;font-weight:700}
-.sheet{position:fixed;z-index:40;inset:0;background:rgba(10,37,64,.45);opacity:0;pointer-events:none;transition:.22s;display:flex;align-items:flex-end;justify-content:center}
-.sheet.on{opacity:1;pointer-events:auto}
-.panel{width:100%;max-width:480px;background:var(--paper);border-radius:26px 26px 0 0;padding:8px 18px calc(18px + env(safe-area-inset-bottom));transform:translateY(20px);transition:.24s;max-height:86vh;overflow:auto}
-.sheet.on .panel{transform:none}
-.grab{width:36px;height:4px;border-radius:4px;background:#d4dce8;margin:4px auto 14px}
-.sheethead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.sheethead h2{font-size:22px;letter-spacing:-.03em;margin:0}
-.close{width:32px;height:32px;border-radius:50%;background:#e8eef6;display:grid;place-items:center;font-size:18px;color:#526178}
-.cline{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
-.thumb{width:42px;height:42px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center}
-.thumb svg{width:28px;height:20px}
-.cline .info{min-width:0;flex:1}
-.cline .info b{display:block;font-size:12px;line-height:1.25;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cline .info span{font-size:11px;color:var(--muted)}
-.cline .sum{font-size:12.5px;font-weight:700;white-space:nowrap}
-.srow{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);padding:7px 0}
-.srow b{color:var(--navy);font-weight:650}
-.srow.total{font-size:15px;color:var(--navy);border-top:1px solid var(--line);margin-top:6px;padding-top:12px}
-.srow.total b{font-size:20px;letter-spacing:-.03em}
-.checkout{width:100%;background:var(--indigo);color:#fff;border-radius:16px;padding:15px;font-size:14px;font-weight:700;margin-top:12px;box-shadow:0 16px 30px -18px rgba(99,91,255,.9)}
-.note{font-size:10.5px;color:var(--muted);text-align:center;margin-top:9px;line-height:1.35}
-.done{position:fixed;z-index:60;inset:0;background:rgba(10,37,64,.5);display:none;align-items:center;justify-content:center;padding:24px}
-.done.on{display:flex}
-.donecard{background:#fff;border-radius:24px;padding:26px 22px;max-width:330px;text-align:center;box-shadow:var(--shadow)}
-.donecard .ok{width:54px;height:54px;border-radius:50%;background:#e9f8f1;color:#0e9f6e;display:grid;place-items:center;margin:0 auto 14px;font-size:26px}
-.donecard h3{font-size:20px;letter-spacing:-.03em;margin:0 0 7px}
-.donecard p{font-size:12.5px;color:var(--muted);line-height:1.45;margin:0 0 16px}
-.donecard button{width:100%;background:var(--navy);color:#fff;border-radius:13px;padding:12px;font-weight:600;font-size:13px}
-.foot{padding:0 18px 22px;color:#8b97a8;font-size:10.5px;line-height:1.45;text-align:center}
-.foot b{color:#64748d;font-weight:600}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:#475467;border-radius:99px;padding:8px 12px;font-size:11.5px;font-weight:600;white-space:nowrap;transition:.18s}
+.chip.on{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 8px 16px -10px rgba(108,92,231,.8)}
+.meta{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 7px;color:var(--muted);font-size:11.5px}
+.meta b{color:var(--ink);font-weight:700}
+.list{display:flex;flex-direction:column;gap:9px;padding:3px 16px 12px}
+.item{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:11px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:9px;box-shadow:0 10px 22px -22px rgba(16,24,40,.4);min-width:0}
+.item:active{transform:scale(.995)}
+.thumb{width:78px;height:68px;border-radius:12px;object-fit:cover;background:var(--soft)}
+.iteminfo{min-width:0}
+.itemname{font-size:13px;line-height:1.25;font-weight:650;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.itemmeta{font-size:10.5px;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.itemright{display:flex;flex-direction:column;align-items:flex-end;gap:7px;min-width:64px}
+.price{font-size:16px;font-weight:760;letter-spacing:-.045em;line-height:1}
+.price span{font-size:9.5px;font-weight:500;color:var(--muted);margin-left:2px;letter-spacing:0}
+.plus{width:31px;height:31px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:400;box-shadow:0 8px 14px -8px rgba(108,92,231,.8)}
+.plus:active{transform:scale(.93)}
+.stepper{display:flex;align-items:center;gap:5px;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px}
+.stepper button{width:23px;height:23px;display:grid;place-items:center;font-size:15px;color:var(--ink)}
+.stepper b{font-size:11.5px;min-width:15px;text-align:center}
+.more{align-self:center;margin:6px 0 4px;padding:10px 18px;border:1px solid var(--line);background:#fff;border-radius:99px;font-size:11.5px;font-weight:650;color:#475467}
+.empty{padding:48px 16px;text-align:center;color:var(--muted);font-size:12.5px}
+.foot{padding:4px 16px 16px;color:#98a2b3;font-size:10px;line-height:1.45;text-align:center}
+.foot a{color:#7c6cf0;text-decoration:none}
+/* page head */
+.pagehead{display:flex;align-items:center;gap:10px;padding:14px 16px 8px}
+.pagehead h2{font-size:20px;letter-spacing:-.04em;margin:0;font-weight:740}
+.back{width:34px;height:34px;border-radius:50%;background:var(--soft2);display:grid;place-items:center;color:#344054;flex:0 0 auto}
+/* product */
+.hero{position:relative;margin:0 12px;border-radius:22px;overflow:hidden;background:var(--soft)}
+.hero img{width:100%;height:250px;object-fit:cover}
+.hero .back{position:absolute;left:10px;top:10px;background:rgba(255,255,255,.9);backdrop-filter:blur(6px)}
+.fav{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;color:#667085}
+.fav.on{color:#f04438}
+.pbody{padding:16px}
+.ptitle{font-size:22px;line-height:1.12;letter-spacing:-.045em;font-weight:760;margin:0 0 10px}
+.pprice{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:760;letter-spacing:-.045em}
+.pprice small{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}
+.pack{font-size:10.5px;color:var(--violet);background:var(--lav);border-radius:8px;padding:5px 8px;font-weight:650;letter-spacing:0}
+.desc{font-size:12.5px;line-height:1.5;color:var(--muted);margin:12px 0 16px}
+.qtyrow{display:flex;align-items:center;justify-content:space-between;background:var(--soft);border-radius:13px;padding:7px 8px;margin-bottom:12px}
+.qtyrow .label{font-size:11.5px;color:var(--muted);padding-left:5px}
+.bigstep{display:flex;align-items:center;gap:9px}
+.bigstep button{width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:17px}
+.bigstep b{font-size:14px;min-width:20px;text-align:center}
+.primary{width:100%;background:var(--violet);color:#fff;border-radius:13px;padding:14px;font-size:13.5px;font-weight:700;box-shadow:0 14px 26px -16px rgba(108,92,231,.9)}
+.ghost{width:100%;background:#fff;color:var(--violet);border:1px solid #dcd6ff;border-radius:13px;padding:13px;font-size:13px;font-weight:650;margin-top:9px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 10px}
+.spec{background:var(--soft2);border-radius:12px;padding:9px 8px}
+.spec span{display:block;font-size:9.5px;color:var(--muted);margin-bottom:3px}
+.spec b{display:block;font-size:10.5px;font-weight:650;line-height:1.2}
+.info{background:var(--soft);border-radius:13px;padding:11px 12px;font-size:11px;color:var(--muted);line-height:1.45;margin:0 0 14px}
+.similar h3{font-size:14px;letter-spacing:-.03em;margin:0 0 8px}
+.simscroll{display:flex;gap:8px;overflow:auto;padding:0 0 2px;scrollbar-width:none}
+.simscroll::-webkit-scrollbar{display:none}
+.sim{flex:0 0 120px;background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.sim img{width:100%;height:70px;object-fit:cover}
+.sim .n{font-size:10.5px;line-height:1.25;padding:7px 8px 0;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:26px}
+.sim .p{font-size:11.5px;font-weight:750;padding:4px 8px 8px}
+/* cart */
+.cartlines{padding:4px 16px 0}
+.cline{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.cline img{width:62px;height:56px;border-radius:11px;object-fit:cover}
+.cname{font-size:12.5px;line-height:1.25;font-weight:650;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cmeta{font-size:10.5px;color:var(--muted);margin-top:4px}
+.cright{text-align:right}
+.csum{font-size:13px;font-weight:750;letter-spacing:-.02em}
+.cright .stepper{margin-top:7px;justify-content:flex-end;background:transparent;border:0;padding:0}
+.cright .stepper button{background:var(--soft);width:23px;height:23px;border-radius:7px}
+.trash{color:#98a2b3;font-size:12px;margin-top:4px}
+.fee{display:flex;align-items:center;gap:10px;background:var(--lav);border-radius:14px;padding:11px 12px;margin:13px 16px 0}
+.fee .pct{width:32px;height:32px;border-radius:10px;background:#fff;color:var(--violet);display:grid;place-items:center;font-size:15px;font-weight:750}
+.fee .t{font-size:12px;font-weight:650;line-height:1.2}
+.fee .t span{display:block;font-size:10px;color:var(--muted);font-weight:400;margin-top:2px}
+.fee b{margin-left:auto;font-size:13px;font-weight:750}
+.total{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 4px;font-size:15px;font-weight:650}
+.total b{font-size:24px;letter-spacing:-.05em;font-weight:780}
+.cartactions{padding:9px 16px 0}
+/* orders */
+.tabs{display:flex;gap:7px;padding:4px 16px 10px}
+.tab{padding:7px 12px;border-radius:99px;font-size:11.5px;font-weight:600;color:#475467;background:#fff;border:1px solid var(--line)}
+.tab.on{background:var(--violet);border-color:var(--violet);color:#fff}
+.orders{padding:0 16px}
+.order{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;margin-bottom:9px;box-shadow:0 10px 22px -24px rgba(16,24,40,.4)}
+.order .city{font-size:12.5px;font-weight:700;line-height:1.2}
+.order .num{font-size:10.5px;color:var(--muted);margin-top:4px}
+.order .right{margin-left:auto;text-align:right}
+.order .sum{font-size:12.5px;font-weight:750;margin-bottom:4px}
+.pill{display:inline-block;border-radius:99px;padding:4px 7px;font-size:9.5px;font-weight:650}
+.pill.purple{background:var(--lav);color:#5b4bd6}.pill.green{background:var(--greenbg);color:#087a54}.pill.blue{background:var(--bluebg);color:#1570cd}
+.chev{color:#98a2b3;font-size:17px;margin-left:2px}
+/* profile */
+.profile{padding:8px 16px}
+.profcard{background:linear-gradient(145deg,#f1eeff,#faf9ff);border-radius:18px;padding:16px;display:flex;align-items:center;gap:12px}
+.avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,#8b7cff,#5b4bd6);color:#fff;display:grid;place-items:center;font-size:17px;font-weight:700}
+.profcard b{font-size:15px}.profcard span{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+.menu{margin-top:12px;border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.mrow{display:flex;align-items:center;justify-content:space-between;padding:13px 13px;font-size:12.5px;border-bottom:1px solid var(--line);background:#fff}
+.mrow:last-child{border-bottom:0}.mrow span{color:#98a2b3}
+/* tabbar */
+.tabbar{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:480px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:7px 4px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px -24px rgba(16,24,40,.4)}
+.tb{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:#98a2b3;font-weight:600;padding:3px 0;position:relative}
+.tb.on{color:var(--violet)}
+.tb svg{width:21px;height:21px}
+.badge{position:absolute;top:-1px;right:calc(50% - 20px);min-width:15px;height:15px;border-radius:99px;background:#f04438;color:#fff;font-size:9px;display:grid;place-items:center;padding:0 4px;font-weight:700;border:2px solid #fff}
+/* modal */
+.modal{position:fixed;z-index:60;inset:0;background:rgba(16,24,40,.5);display:none;align-items:center;justify-content:center;padding:22px}
+.modal.on{display:flex}
+.card{background:#fff;border-radius:24px;padding:24px 20px;max-width:330px;width:100%;text-align:center;box-shadow:var(--shadow)}
+.check{width:58px;height:58px;border-radius:50%;background:var(--lav);color:var(--violet);display:grid;place-items:center;margin:0 auto 13px;font-size:26px}
+.card h3{font-size:21px;letter-spacing:-.045em;margin:0 0 6px}
+.card p{font-size:12px;color:var(--muted);line-height:1.45;margin:0 0 14px}
+.card .sum{font-size:20px;font-weight:760;letter-spacing:-.04em;margin-bottom:14px}
+/* toast */
+.toast{position:fixed;z-index:50;left:50%;bottom:calc(82px + env(safe-area-inset-bottom));transform:translate(-50%,12px);background:var(--ink);color:#fff;border-radius:99px;padding:9px 14px;font-size:11.5px;opacity:0;pointer-events:none;transition:.2s;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:370px){h1{font-size:27px}.item{grid-template-columns:68px minmax(0,1fr) auto}.thumb{width:68px;height:62px}.itemname{font-size:12px}.status{font-size:9.5px;padding:6px 7px}.brand{font-size:16px}}
 </style>
 </head>
 <body>
 <div class="app">
-  <header>
-    <div class="top">
-      <div class="logo" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12c2.6-4.2 8-5.6 12.3-2.6L20.5 6v12l-5.7-3.4C10.5 17.6 5.1 16.2 2.5 12z"/><circle cx="8.6" cy="11.2" r=".7" fill="#fff"/></svg>
+  <!-- КАТАЛОГ -->
+  <section class="screen on" id="scr-catalog">
+    <header class="brandhead">
+      <div class="brandtop">
+        <div class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12c2.6-4.2 8-5.6 12.3-2.6L20.5 6v12l-5.7-3.4C10.5 17.6 5.1 16.2 2.5 12z"/><circle cx="8.6" cy="11.2" r=".7" fill="#fff"/></svg></div>
+        <div style="min-width:0"><div class="brand">Рыба моя</div><div class="sub">Оренбург · крупный опт</div></div>
+        <div class="status"><i></i>Сбор открыт</div>
       </div>
-      <div>
-        <div class="brand">Рыба моя</div>
-        <div class="sub">Оренбург · крупный опт</div>
+      <h1>Живая рыба<br>и не только</h1>
+      <p class="lead">Цена за одну рыбу. Упаковку собираем по всем заказам — если не наберётся, лишнее уберём.</p>
+      <div class="search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" type="search" placeholder="Найти рыбу или номер" autocomplete="off">
       </div>
-      <div class="live"><i></i>Сбор открыт</div>
-    </div>
-    <h1>Живая рыба<br>и не только</h1>
-    <p class="lead">Цена за одну рыбу. Упаковку собираем по всем заказам — если не наберётся, лишнее уберём.</p>
-    <div class="search">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-      <input id="q" type="search" placeholder="Найти рыбу или номер" autocomplete="off">
-    </div>
-  </header>
-  <div class="cats" id="cats"></div>
-  <div class="meta"><span><b id="shown">0</b> <span id="shownWord">позиций</span></span><span>до 26 ноября, 20:00</span></div>
-  <main class="grid" id="grid"></main>
-  <div class="foot"><b>Демо-каталог.</b> Заказ появится в боте, оплата — после закрытия сбора.</div>
+    </header>
+    <div class="cats" id="cats"></div>
+    <div class="meta"><span><b id="shown">0</b> <span id="shownWord">позиций</span></span><span>до 26 ноября, 20:00</span></div>
+    <div class="list" id="list"></div>
+    <div class="foot"><a href="https://commons.wikimedia.org/" target="_blank">Фото: Wikimedia Commons</a> · демо-каталог</div>
+  </section>
 
-  <div class="cartbar hide" id="bar">
-    <div class="count" id="barCount">0</div>
-    <div class="t">В корзине<b id="barTotal">0 ₽</b></div>
-    <button class="go" id="barGo">Смотреть</button>
-  </div>
-
-  <div class="sheet" id="sheet">
-    <div class="panel">
-      <div class="grab"></div>
-      <div class="sheethead"><h2>Корзина</h2><button class="close" id="close">×</button></div>
-      <div id="cartLines"></div>
-      <div id="cartSummary"></div>
-      <button class="checkout" id="checkout">Оформить заказ</button>
-      <div class="note">Оплата после закрытия сбора. Доставка — отдельно, по итогам.</div>
+  <!-- ТОВАР -->
+  <section class="screen" id="scr-product">
+    <div class="hero">
+      <img id="pimg" alt="">
+      <button class="back" data-back>‹</button>
+      <button class="fav" id="pfav">♡</button>
     </div>
-  </div>
+    <div class="pbody">
+      <h2 class="ptitle" id="pname"></h2>
+      <div class="pprice"><span id="pprice"></span><small>₽ / шт</small><span class="pack" id="ppack"></span></div>
+      <p class="desc" id="pdesc"></p>
+      <div class="specs" id="pspecs"></div>
+      <div class="info">Оплата после закрытия сбора. Доставка по Оренбургу — отдельно, по итогам.</div>
+      <div class="qtyrow"><span class="label">Количество</span><div class="bigstep"><button id="pminus">−</button><b id="pqty">1</b><button id="pplus">+</button></div></div>
+      <button class="primary" id="padd">Добавить в корзину</button>
+      <button class="ghost" data-back>Вернуться в каталог</button>
+      <div class="similar" style="margin-top:20px"><h3>Похожие</h3><div class="simscroll" id="psimilar"></div></div>
+    </div>
+  </section>
 
-  <div class="done" id="done">
-    <div class="donecard">
-      <div class="ok">✓</div>
-      <h3>Заказ отправлен</h3>
-      <p>Это демо. В рабочей версии заказ появится в боте, и Александра пришлёт подтверждение.</p>
-      <button id="doneClose">Понятно</button>
+  <!-- КОРЗИНА -->
+  <section class="screen" id="scr-cart">
+    <div class="pagehead"><button class="back" data-back>‹</button><h2>Корзина</h2></div>
+    <div class="cartlines" id="cartlines"></div>
+    <div id="cartsum"></div>
+    <div class="cartactions" id="cartactions"></div>
+  </section>
+
+  <!-- ЗАКАЗЫ -->
+  <section class="screen" id="scr-orders">
+    <div class="pagehead"><button class="back" data-back>‹</button><h2>Мои заказы</h2></div>
+    <div class="tabs" id="tabs"><button class="tab on" data-tab="all">Все</button><button class="tab" data-tab="active">Активные</button><button class="tab" data-tab="done">Завершённые</button></div>
+    <div class="orders" id="orders"></div>
+  </section>
+
+  <!-- ПРОФИЛЬ -->
+  <section class="screen" id="scr-profile">
+    <div class="pagehead"><h2>Профиль</h2></div>
+    <div class="profile">
+      <div class="profcard"><div class="avatar">А</div><div><b>Александра</b><span>Оренбург · крупный опт</span></div></div>
+      <div class="menu">
+        <div class="mrow" data-tab-jump="orders">Мои заказы <span>›</span></div>
+        <div class="mrow">Адрес доставки <span>›</span></div>
+        <div class="mrow">Как получить <span>›</span></div>
+        <div class="mrow">Написать организатору <span>›</span></div>
+      </div>
+      <div class="foot" style="padding:16px 0 0">Демо-версия каталога. Заказы появятся в боте.</div>
+    </div>
+  </section>
+
+  <nav class="tabbar">
+    <button class="tb on" data-tab-btn="catalog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Каталог</button>
+    <button class="tb" data-tab-btn="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>Корзина<span class="badge" id="badge" style="display:none">0</span></button>
+    <button class="tb" data-tab-btn="orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg>Заказы</button>
+    <button class="tb" data-tab-btn="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Профиль</button>
+  </nav>
+
+  <div class="toast" id="toast">Добавлено в корзину</div>
+
+  <div class="modal" id="success">
+    <div class="card">
+      <div class="check">✓</div>
+      <h3>Заказ оформлен!</h3>
+      <div class="sum" id="successSum">№15 · 18 239 ₽</div>
+      <p>Это демо. В рабочей версии заказ появится в боте, и Александра пришлёт подтверждение и оплату.</p>
+      <button class="primary" id="successClose">Вернуться в каталог</button>
     </div>
   </div>
 </div>
 
 <script>
-const ITEMS = [{"num":1,"name":"Барбус суматранский гло ассорти (2-2,5 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Барбусы"},{"num":2,"name":"Барбус суматранский мшистый (2-2,5 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Барбусы"},{"num":3,"name":"Барбус алый (3 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Барбусы"},{"num":4,"name":"Барбус вишневый вуалевый (2,5 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Барбусы"},{"num":5,"name":"Барбус восьмиполосый (3 см)","price":115,"pack_size":15,"min_batch":null,"cat":"Барбусы"},{"num":6,"name":"Барбус лещевидный золотой (7,5 см)","price":275,"pack_size":5,"min_batch":null,"cat":"Барбусы"},{"num":7,"name":"Барбус олиголепис (2,5 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Барбусы"},{"num":8,"name":"Барбус ромбооцелятус (3,5 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Барбусы"},{"num":9,"name":"Краб вампир триколор","price":190,"pack_size":null,"min_batch":null,"cat":"Креветки"},{"num":10,"name":"Краб золотоглазый","price":230,"pack_size":null,"min_batch":null,"cat":"Креветки"},{"num":11,"name":"Краб пантера","price":300,"pack_size":null,"min_batch":null,"cat":"Креветки"},{"num":12,"name":"Креветка амано (2 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Креветки"},{"num":13,"name":"Креветка кровавая мэри","price":85,"pack_size":15,"min_batch":null,"cat":"Креветки"},{"num":14,"name":"Креветка синий вельвет","price":90,"pack_size":15,"min_batch":null,"cat":"Креветки"},{"num":15,"name":"Креветка фильтратор (3-5 см)","price":220,"pack_size":4,"min_batch":null,"cat":"Креветки"},{"num":16,"name":"Рак мексиканский карликовый","price":215,"pack_size":5,"min_batch":null,"cat":"Креветки"},{"num":17,"name":"Моллюск двустворчатый криспата","price":80,"pack_size":20,"min_batch":null,"cat":"Креветки"},{"num":18,"name":"Улитка батик","price":50,"pack_size":30,"min_batch":null,"cat":"Креветки"},{"num":19,"name":"Улитка билайн","price":55,"pack_size":30,"min_batch":null,"cat":"Креветки"},{"num":20,"name":"Улитка зебра","price":55,"pack_size":30,"min_batch":null,"cat":"Креветки"},{"num":21,"name":"Улитка кролик в белую точку","price":210,"pack_size":10,"min_batch":null,"cat":"Креветки"},{"num":22,"name":"Улитка кролик каппучино","price":150,"pack_size":10,"min_batch":null,"cat":"Креветки"},{"num":23,"name":"Улитка мартенси белая","price":105,"pack_size":15,"min_batch":null,"cat":"Креветки"},{"num":24,"name":"Акантофтальмус кули (4 см)","price":55,"pack_size":20,"min_batch":null,"cat":"Сомы и донные"},{"num":25,"name":"Боция клоун (4 см)","price":350,"pack_size":5,"min_batch":null,"cat":"Сомы и донные"},{"num":26,"name":"Боция модеста (4-5 см)","price":225,"pack_size":5,"min_batch":null,"cat":"Сомы и донные"},{"num":27,"name":"Данио золотые колечки (2 см)","price":160,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":28,"name":"Данио малабарский (3-4 см)","price":80,"pack_size":15,"min_batch":null,"cat":"Харациновые"},{"num":29,"name":"Микрорасбора галактика (2 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":30,"name":"Расбора сабва самцы (3-3,5 см)","price":165,"pack_size":15,"min_batch":null,"cat":"Харациновые"},{"num":31,"name":"Ауха альбино (9-10 см)","price":9000,"pack_size":2,"min_batch":null,"cat":"Цихлиды"},{"num":32,"name":"Афиосемион гарднери (3 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Прочее"},{"num":33,"name":"Бычок пчелка (1,5-2 см)","price":55,"pack_size":20,"min_batch":null,"cat":"Прочее"},{"num":34,"name":"Бычок синий неоновый (4 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Прочее"},{"num":35,"name":"Нож черный (5-6 см)","price":320,"pack_size":5,"min_batch":null,"cat":"Прочее"},{"num":36,"name":"Полиптерус эндлихера (5-6 см)","price":380,"pack_size":2,"min_batch":null,"cat":"Прочее"},{"num":37,"name":"Полурыл серебряный (2-3 см)","price":90,"pack_size":15,"min_batch":null,"cat":"Прочее"},{"num":38,"name":"Тетраодон зеленый (3-3,5 см)","price":140,"pack_size":10,"min_batch":null,"cat":"Харациновые"},{"num":39,"name":"Тетраодон фахака (3 см)","price":195,"pack_size":6,"min_batch":null,"cat":"Харациновые"},{"num":40,"name":"Эпиплатис факельный (2 см)","price":95,"pack_size":20,"min_batch":null,"cat":"Живородки"},{"num":41,"name":"Лягушка карликовая (1-2 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Прочее"},{"num":42,"name":"Лягушка карликовая золотая (1-2 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Прочее"},{"num":43,"name":"Черепаха красноухая","price":210,"pack_size":10,"min_batch":null,"cat":"Прочее"},{"num":44,"name":"Гуппи самки кобра зеленая (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":45,"name":"Гуппи самки кобра красная (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":46,"name":"Гуппи самки сапфир синяя (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":47,"name":"Гуппи блондин красный (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":48,"name":"Гуппи голубой хвост ножницы (2,5-3 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":49,"name":"Гуппи кобра зеленая (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":50,"name":"Гуппи кобра кои (2,5-3 см)","price":70,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":51,"name":"Гуппи кобра красная (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":52,"name":"Гуппи леопард (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":53,"name":"Гуппи призрак (2,5-3 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":54,"name":"Гуппи слоноухие платиновая (2,5-3 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Живородки"},{"num":55,"name":"Гуппи эндлера кобра желтая (2 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Живородки"},{"num":56,"name":"Меченосец ананасовый (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки"},{"num":57,"name":"Меченосец зеленый (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки"},{"num":58,"name":"Меченосец комета красная (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки"},{"num":59,"name":"Меченосец черный (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки"},{"num":60,"name":"Моллинезия баллон оранжевая (3-4 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Живородки"},{"num":61,"name":"Моллинезия велифера мраморная (3-3,5 см)","price":190,"pack_size":10,"min_batch":null,"cat":"Живородки"},{"num":62,"name":"Моллинезия сфенопс золотая лира (3 см)","price":85,"pack_size":20,"min_batch":null,"cat":"Живородки"},{"num":63,"name":"Моллинезия сфенопс черно-золотая лира (3 см)","price":85,"pack_size":20,"min_batch":null,"cat":"Живородки"},{"num":64,"name":"Пецилия красная (3 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Живородки"},{"num":65,"name":"Пецилия тигровая (3 см)","price":150,"pack_size":20,"min_batch":null,"cat":"Живородки"},{"num":66,"name":"Вуалехвост красно белый (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки"},{"num":67,"name":"Вуалехвост красный (5 см)","price":180,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки"},{"num":68,"name":"Карп кои бабочка селекционный sbs (13-15 см)","price":1900,"pack_size":null,"min_batch":null,"cat":"Золотые рыбки"},{"num":69,"name":"Карп кои призрак sbs (13-15 см)","price":1100,"pack_size":2,"min_batch":null,"cat":"Золотые рыбки"},{"num":70,"name":"Комета красная (5 см)","price":135,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки"},{"num":71,"name":"Сараса (5 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки"},{"num":72,"name":"Оранда красная (5-6 см)","price":215,"pack_size":8,"min_batch":null,"cat":"Золотые рыбки"},{"num":73,"name":"Оранда красная шапочка (5 см)","price":180,"pack_size":8,"min_batch":null,"cat":"Золотые рыбки"},{"num":74,"name":"Оранда красно белая (4-5 см)","price":160,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки"},{"num":75,"name":"Риукин ситцевый (5 см)","price":190,"pack_size":8,"min_batch":null,"cat":"Золотые рыбки"},{"num":76,"name":"Телескоп бабочка красная (5 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Золотые рыбки"},{"num":77,"name":"Телескоп бабочка черная (5 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Золотые рыбки"},{"num":78,"name":"Шубункин ситец (5 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки"},{"num":79,"name":"Ириатерина вернера (2,5-3 см)","price":90,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":80,"name":"Псевдомугил гертруды (2,5 см)","price":100,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":81,"name":"Псевдомугил красный неон (2 см)","price":150,"pack_size":15,"min_batch":null,"cat":"Харациновые"},{"num":82,"name":"Псевдомугил сигнифер (2-2,5 см)","price":90,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":83,"name":"Псевдомугил тенеллус (3 см)","price":250,"pack_size":10,"min_batch":null,"cat":"Харациновые"},{"num":84,"name":"Радужница боэсмана (3,5 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Харациновые"},{"num":85,"name":"Тельматерина солнечный лучик (2,5 см)","price":99,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":86,"name":"Буцефаландра зелёная волнистая","price":165,"pack_size":null,"min_batch":null,"cat":"Растения"},{"num":87,"name":"Микрозориум птеропус","price":75,"pack_size":null,"min_batch":null,"cat":"Растения"},{"num":88,"name":"Анциструс золотой (3 см)","price":90,"pack_size":15,"min_batch":null,"cat":"Сомы и донные"},{"num":89,"name":"Коридорас золотистый (4 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Сомы и донные"},{"num":90,"name":"Коридорас пигмей (1,5 см)","price":90,"pack_size":20,"min_batch":null,"cat":"Сомы и донные"},{"num":91,"name":"Коридорас штерба (2,5-3 см)","price":185,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":92,"name":"Лорикария красная (4-5 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Сомы и донные"},{"num":93,"name":"Пангасиус (5-6 см)","price":85,"pack_size":15,"min_batch":null,"cat":"Сомы и донные"},{"num":94,"name":"Плекостомус (5 см)","price":130,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":95,"name":"Птеригоплихт (5 см)","price":180,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":96,"name":"Неон бриллиантовый (2 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":97,"name":"Неон голубой (2-2,5 см)","price":25,"pack_size":70,"min_batch":null,"cat":"Харациновые"},{"num":98,"name":"Неон красный альбино (1,5-2 см)","price":70,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":99,"name":"Кардинал (2-2,5 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":100,"name":"Кардинал золотой (2-2,5 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":101,"name":"Керри (1,5-2 см)","price":59,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":102,"name":"Клинобрюшка (2,2 см)","price":140,"pack_size":10,"min_batch":null,"cat":"Харациновые"},{"num":103,"name":"Конго тетра (3 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Харациновые"},{"num":104,"name":"Милеус шомбурка (6-7 см)","price":400,"pack_size":3,"min_batch":null,"cat":"Цихлиды"},{"num":105,"name":"Минор (2 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":106,"name":"Наностомус бекфорда (2 см)","price":59,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":107,"name":"Орнатус (2 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":108,"name":"Пальмери черная (2,5-3 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":109,"name":"Пристелла фиолетовая гло (2-2,5 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":110,"name":"Родостомус (2,5 см)","price":70,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":111,"name":"Серпас (2-3 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":112,"name":"Тернеция ассорти цветная (2,5-3 см)","price":50,"pack_size":35,"min_batch":null,"cat":"Харациновые"},{"num":113,"name":"Тетра аманда (2 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":114,"name":"Тетра бриллиантовая (2-2,5 см)","price":95,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":115,"name":"Тетра колумбийская (3-4 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":116,"name":"Тетра коста (3-4 см)","price":65,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":117,"name":"Тетра лимонная (2 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":118,"name":"Тетра медная (2,5-3 см)","price":50,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":119,"name":"Тетра стеклянная (2-2,5 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Харациновые"},{"num":120,"name":"Тетра фонарик (2-2,5 см)","price":85,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":121,"name":"Тетра элахис (2,2 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":122,"name":"Фантом черный (2 см)","price":69,"pack_size":20,"min_batch":null,"cat":"Харациновые"},{"num":123,"name":"Халцеус (6 см)","price":280,"pack_size":5,"min_batch":null,"cat":"Харациновые"},{"num":124,"name":"Хилодус (4-5 см)","price":245,"pack_size":5,"min_batch":null,"cat":"Харациновые"},{"num":125,"name":"Апистограмма рамирези (3 см)","price":85,"pack_size":15,"min_batch":null,"cat":"Апистограммы"},{"num":126,"name":"Апистограмма рамирези \"тёмный шоколад\" (3 см)","price":185,"pack_size":6,"min_batch":null,"cat":"Апистограммы"},{"num":127,"name":"Апистограмма рамирези золотая (3 см)","price":75,"pack_size":15,"min_batch":null,"cat":"Апистограммы"},{"num":128,"name":"Апистограмма рамирези золотая баллон (3 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Апистограммы"},{"num":129,"name":"Апистограмма рамирези электрик блю (3 см)","price":150,"pack_size":8,"min_batch":null,"cat":"Апистограммы"},{"num":130,"name":"Акара бирюзовая (5-6 см)","price":130,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":131,"name":"Блю демпси (3-3,5 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Цихлиды"},{"num":132,"name":"Попугай желтый (6 см)","price":795,"pack_size":2,"min_batch":null,"cat":"Цихлиды"},{"num":133,"name":"Попугай платиновый (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":134,"name":"Попугай пурпурный (6-7 см)","price":780,"pack_size":2,"min_batch":null,"cat":"Цихлиды"},{"num":135,"name":"Попугай синий тигровый (4 см)","price":90,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":136,"name":"Попугайчик (3 см)","price":135,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":137,"name":"Цихлазома меека (4 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":138,"name":"Цихлазома северум красноплечий (3-4 см)","price":200,"pack_size":5,"min_batch":null,"cat":"Цихлиды"},{"num":139,"name":"Копадихромис каданго (4-5 см)","price":185,"pack_size":8,"min_batch":null,"cat":"Цихлиды"},{"num":140,"name":"Лабидохромис йеллоу (4 см)","price":195,"pack_size":8,"min_batch":null,"cat":"Цихлиды"},{"num":141,"name":"Меланохромис йохани (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":142,"name":"Нимбохромис золотой леопард (3,5 см)","price":110,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":143,"name":"Псевдотрофеус зебра красная (4 см)","price":150,"pack_size":8,"min_batch":null,"cat":"Цихлиды"},{"num":144,"name":"Псевдотрофеус снежный принц (3 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":145,"name":"Трофеус звездчатый (2 см)","price":310,"pack_size":4,"min_batch":null,"cat":"Цихлиды"},{"num":146,"name":"Фронтоза (2,5-3 см)","price":310,"pack_size":4,"min_batch":null,"cat":"Цихлиды"},{"num":147,"name":"Хаплохромис голубой дельфин (5 см)","price":195,"pack_size":6,"min_batch":null,"cat":"Цихлиды"},{"num":148,"name":"Скалярия ассорти (7-8 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Цихлиды"},{"num":149,"name":"Скалярия золотой мрамор (3 см)","price":45,"pack_size":20,"min_batch":null,"cat":"Цихлиды"},{"num":150,"name":"Скалярия кои (3 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Цихлиды"},{"num":151,"name":"Скалярия призрак (3 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Цихлиды"},{"num":152,"name":"Скалярия черная (3 см)","price":105,"pack_size":20,"min_batch":null,"cat":"Цихлиды"},{"num":153,"name":"Гурами гигантский золотой (6-7 см)","price":450,"pack_size":3,"min_batch":null,"cat":"Гурами"},{"num":154,"name":"Гурами карликовый искрящийся (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Гурами"},{"num":155,"name":"Гурами медовый золотой (3 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Гурами"},{"num":156,"name":"Гурами медовый красный (4 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Гурами"},{"num":157,"name":"Гурами мраморный (5 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Гурами"},{"num":158,"name":"Гурами синяя линия (2 см)","price":185,"pack_size":10,"min_batch":null,"cat":"Гурами"},{"num":159,"name":"Ктенопома леопардовая (2 см)","price":220,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые"},{"num":160,"name":"Лябиоза сансет (3-3,5 см)","price":210,"pack_size":8,"min_batch":null,"cat":"Лабиринтовые"},{"num":161,"name":"Лялиус (4 см)","price":240,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые"},{"num":162,"name":"Лялиус кобальтовый (4 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые"},{"num":163,"name":"Лялиус красный (4 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые"},{"num":164,"name":"Макропод (3-4 см)","price":175,"pack_size":10,"min_batch":null,"cat":"Лабиринтовые"},{"num":165,"name":"Петушок самки супердельта (4 см)","price":150,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые"},{"num":166,"name":"Петушок двухвостый (4 см)","price":190,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые"},{"num":167,"name":"Петушок кои желтый (4-5 см)","price":600,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые"},{"num":168,"name":"Петушок коронохвостый (4 см)","price":150,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые"},{"num":169,"name":"Петушок слоноухий (4 см)","price":300,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые"},{"num":170,"name":"Петушок супердельта (4 см)","price":190,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые"},{"num":171,"name":"Акулий балу (6,5 см)","price":185,"pack_size":6,"min_batch":null,"cat":"Сомы и донные"},{"num":172,"name":"Гарра руфа (3 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Сомы и донные"},{"num":173,"name":"Гарра флаватра (2,5 см)","price":175,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":174,"name":"Гастромизон ктеноцефалус (3 см)","price":200,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":175,"name":"Гастромизон майерси (3-4 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Сомы и донные"},{"num":176,"name":"Гастромизон оцеллятус (3-4 см)","price":320,"pack_size":5,"min_batch":null,"cat":"Сомы и донные"},{"num":177,"name":"Гиринохейл золотой (5-6 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":178,"name":"Гиринохейл черно золотой (6-7 см)","price":105,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":179,"name":"Лабео биколор (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Сомы и донные"},{"num":180,"name":"Миксоципринус (парусник) (5-6 см)","price":460,"pack_size":2,"min_batch":null,"cat":"Сомы и донные"},{"num":181,"name":"Севелия линеолата (2-2,5 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Прочее"}];
+const ITEMS = [{"num":1,"name":"Барбус суматранский гло ассорти (2-2,5 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":2,"name":"Барбус суматранский мшистый (2-2,5 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":3,"name":"Барбус алый (3 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":4,"name":"Барбус вишневый вуалевый (2,5 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Барбусы","img":"cherry","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":5,"name":"Барбус восьмиполосый (3 см)","price":115,"pack_size":15,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":6,"name":"Барбус лещевидный золотой (7,5 см)","price":275,"pack_size":5,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":7,"name":"Барбус олиголепис (2,5 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":8,"name":"Барбус ромбооцелятус (3,5 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Барбусы","img":"barb","desc":"Активная стайная рыба. Любит течение, густые растения и компанию 6–8 штук."},{"num":9,"name":"Краб вампир триколор","price":190,"pack_size":null,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":10,"name":"Краб золотоглазый","price":230,"pack_size":null,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":11,"name":"Краб пантера","price":300,"pack_size":null,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":12,"name":"Креветка амано (2 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":13,"name":"Креветка кровавая мэри","price":85,"pack_size":15,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":14,"name":"Креветка синий вельвет","price":90,"pack_size":15,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":15,"name":"Креветка фильтратор (3-5 см)","price":220,"pack_size":4,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":16,"name":"Рак мексиканский карликовый","price":215,"pack_size":5,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":17,"name":"Моллюск двустворчатый криспата","price":80,"pack_size":20,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":18,"name":"Улитка батик","price":50,"pack_size":30,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":19,"name":"Улитка билайн","price":55,"pack_size":30,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":20,"name":"Улитка зебра","price":55,"pack_size":30,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":21,"name":"Улитка кролик в белую точку","price":210,"pack_size":10,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":22,"name":"Улитка кролик каппучино","price":150,"pack_size":10,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":23,"name":"Улитка мартенси белая","price":105,"pack_size":15,"min_batch":null,"cat":"Креветки","img":"shrimp","desc":"Мирная креветка-санитар для нано-аквариума. Любит мох и укрытия."},{"num":24,"name":"Акантофтальмус кули (4 см)","price":55,"pack_size":20,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":25,"name":"Боция клоун (4 см)","price":350,"pack_size":5,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":26,"name":"Боция модеста (4-5 см)","price":225,"pack_size":5,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":27,"name":"Данио золотые колечки (2 см)","price":160,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":28,"name":"Данио малабарский (3-4 см)","price":80,"pack_size":15,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":29,"name":"Микрорасбора галактика (2 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":30,"name":"Расбора сабва самцы (3-3,5 см)","price":165,"pack_size":15,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":31,"name":"Ауха альбино (9-10 см)","price":9000,"pack_size":2,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":32,"name":"Афиосемион гарднери (3 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":33,"name":"Бычок пчелка (1,5-2 см)","price":55,"pack_size":20,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":34,"name":"Бычок синий неоновый (4 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":35,"name":"Нож черный (5-6 см)","price":320,"pack_size":5,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":36,"name":"Полиптерус эндлихера (5-6 см)","price":380,"pack_size":2,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":37,"name":"Полурыл серебряный (2-3 см)","price":90,"pack_size":15,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":38,"name":"Тетраодон зеленый (3-3,5 см)","price":140,"pack_size":10,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":39,"name":"Тетраодон фахака (3 см)","price":195,"pack_size":6,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":40,"name":"Эпиплатис факельный (2 см)","price":95,"pack_size":20,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":41,"name":"Лягушка карликовая (1-2 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":42,"name":"Лягушка карликовая золотая (1-2 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":43,"name":"Черепаха красноухая","price":210,"pack_size":10,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."},{"num":44,"name":"Гуппи самки кобра зеленая (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":45,"name":"Гуппи самки кобра красная (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":46,"name":"Гуппи самки сапфир синяя (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":47,"name":"Гуппи блондин красный (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":48,"name":"Гуппи голубой хвост ножницы (2,5-3 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":49,"name":"Гуппи кобра зеленая (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":50,"name":"Гуппи кобра кои (2,5-3 см)","price":70,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":51,"name":"Гуппи кобра красная (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":52,"name":"Гуппи леопард (2,5-3 см)","price":69,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":53,"name":"Гуппи призрак (2,5-3 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":54,"name":"Гуппи слоноухие платиновая (2,5-3 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":55,"name":"Гуппи эндлера кобра желтая (2 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Живородки","img":"guppy","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":56,"name":"Меченосец ананасовый (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":57,"name":"Меченосец зеленый (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":58,"name":"Меченосец комета красная (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":59,"name":"Меченосец черный (3 см)","price":100,"pack_size":15,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":60,"name":"Моллинезия баллон оранжевая (3-4 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":61,"name":"Моллинезия велифера мраморная (3-3,5 см)","price":190,"pack_size":10,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":62,"name":"Моллинезия сфенопс золотая лира (3 см)","price":85,"pack_size":20,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":63,"name":"Моллинезия сфенопс черно-золотая лира (3 см)","price":85,"pack_size":20,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":64,"name":"Пецилия красная (3 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":65,"name":"Пецилия тигровая (3 см)","price":150,"pack_size":20,"min_batch":null,"cat":"Живородки","img":"molly","desc":"Неприхотливая живородящая рыбка. Хороший выбор для первого аквариума."},{"num":66,"name":"Вуалехвост красно белый (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":67,"name":"Вуалехвост красный (5 см)","price":180,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":68,"name":"Карп кои бабочка селекционный sbs (13-15 см)","price":1900,"pack_size":null,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":69,"name":"Карп кои призрак sbs (13-15 см)","price":1100,"pack_size":2,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":70,"name":"Комета красная (5 см)","price":135,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":71,"name":"Сараса (5 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":72,"name":"Оранда красная (5-6 см)","price":215,"pack_size":8,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":73,"name":"Оранда красная шапочка (5 см)","price":180,"pack_size":8,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":74,"name":"Оранда красно белая (4-5 см)","price":160,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":75,"name":"Риукин ситцевый (5 см)","price":190,"pack_size":8,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":76,"name":"Телескоп бабочка красная (5 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":77,"name":"Телескоп бабочка черная (5 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":78,"name":"Шубункин ситец (5 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Золотые рыбки","img":"gold","desc":"Крупная золотая рыбка. Нужен просторный аквариум и хорошая фильтрация."},{"num":79,"name":"Ириатерина вернера (2,5-3 см)","price":90,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":80,"name":"Псевдомугил гертруды (2,5 см)","price":100,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":81,"name":"Псевдомугил красный неон (2 см)","price":150,"pack_size":15,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":82,"name":"Псевдомугил сигнифер (2-2,5 см)","price":90,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":83,"name":"Псевдомугил тенеллус (3 см)","price":250,"pack_size":10,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":84,"name":"Радужница боэсмана (3,5 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":85,"name":"Тельматерина солнечный лучик (2,5 см)","price":99,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":86,"name":"Буцефаландра зелёная волнистая","price":165,"pack_size":null,"min_batch":null,"cat":"Растения","img":"plant","desc":"Живое растение для аквариума. Сажается в грунт или крепится к коряге."},{"num":87,"name":"Микрозориум птеропус","price":75,"pack_size":null,"min_batch":null,"cat":"Растения","img":"plant","desc":"Живое растение для аквариума. Сажается в грунт или крепится к коряге."},{"num":88,"name":"Анциструс золотой (3 см)","price":90,"pack_size":15,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":89,"name":"Коридорас золотистый (4 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":90,"name":"Коридорас пигмей (1,5 см)","price":90,"pack_size":20,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":91,"name":"Коридорас штерба (2,5-3 см)","price":185,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":92,"name":"Лорикария красная (4-5 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":93,"name":"Пангасиус (5-6 см)","price":85,"pack_size":15,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":94,"name":"Плекостомус (5 см)","price":130,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":95,"name":"Птеригоплихт (5 см)","price":180,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":96,"name":"Неон бриллиантовый (2 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":97,"name":"Неон голубой (2-2,5 см)","price":25,"pack_size":70,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":98,"name":"Неон красный альбино (1,5-2 см)","price":70,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":99,"name":"Кардинал (2-2,5 см)","price":45,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":100,"name":"Кардинал золотой (2-2,5 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":101,"name":"Керри (1,5-2 см)","price":59,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":102,"name":"Клинобрюшка (2,2 см)","price":140,"pack_size":10,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":103,"name":"Конго тетра (3 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":104,"name":"Милеус шомбурка (6-7 см)","price":400,"pack_size":3,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":105,"name":"Минор (2 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":106,"name":"Наностомус бекфорда (2 см)","price":59,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":107,"name":"Орнатус (2 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":108,"name":"Пальмери черная (2,5-3 см)","price":80,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":109,"name":"Пристелла фиолетовая гло (2-2,5 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":110,"name":"Родостомус (2,5 см)","price":70,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":111,"name":"Серпас (2-3 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":112,"name":"Тернеция ассорти цветная (2,5-3 см)","price":50,"pack_size":35,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":113,"name":"Тетра аманда (2 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":114,"name":"Тетра бриллиантовая (2-2,5 см)","price":95,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":115,"name":"Тетра колумбийская (3-4 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":116,"name":"Тетра коста (3-4 см)","price":65,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":117,"name":"Тетра лимонная (2 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":118,"name":"Тетра медная (2,5-3 см)","price":50,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":119,"name":"Тетра стеклянная (2-2,5 см)","price":65,"pack_size":30,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":120,"name":"Тетра фонарик (2-2,5 см)","price":85,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":121,"name":"Тетра элахис (2,2 см)","price":70,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":122,"name":"Фантом черный (2 см)","price":69,"pack_size":20,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":123,"name":"Халцеус (6 см)","price":280,"pack_size":5,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":124,"name":"Хилодус (4-5 см)","price":245,"pack_size":5,"min_batch":null,"cat":"Харациновые","img":"neon","desc":"Небольшая стайная рыбка. Лучше брать от 6–8 штук — так она ярче и спокойнее."},{"num":125,"name":"Апистограмма рамирези (3 см)","price":85,"pack_size":15,"min_batch":null,"cat":"Апистограммы","img":"ram","desc":"Небольшая цихлида для аквариума с укрытиями, корягами и мягкой водой."},{"num":126,"name":"Апистограмма рамирези \"тёмный шоколад\" (3 см)","price":185,"pack_size":6,"min_batch":null,"cat":"Апистограммы","img":"ram","desc":"Небольшая цихлида для аквариума с укрытиями, корягами и мягкой водой."},{"num":127,"name":"Апистограмма рамирези золотая (3 см)","price":75,"pack_size":15,"min_batch":null,"cat":"Апистограммы","img":"ram","desc":"Небольшая цихлида для аквариума с укрытиями, корягами и мягкой водой."},{"num":128,"name":"Апистограмма рамирези золотая баллон (3 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Апистограммы","img":"ram","desc":"Небольшая цихлида для аквариума с укрытиями, корягами и мягкой водой."},{"num":129,"name":"Апистограмма рамирези электрик блю (3 см)","price":150,"pack_size":8,"min_batch":null,"cat":"Апистограммы","img":"ram","desc":"Небольшая цихлида для аквариума с укрытиями, корягами и мягкой водой."},{"num":130,"name":"Акара бирюзовая (5-6 см)","price":130,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":131,"name":"Блю демпси (3-3,5 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":132,"name":"Попугай желтый (6 см)","price":795,"pack_size":2,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":133,"name":"Попугай платиновый (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":134,"name":"Попугай пурпурный (6-7 см)","price":780,"pack_size":2,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":135,"name":"Попугай синий тигровый (4 см)","price":90,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":136,"name":"Попугайчик (3 см)","price":135,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":137,"name":"Цихлазома меека (4 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":138,"name":"Цихлазома северум красноплечий (3-4 см)","price":200,"pack_size":5,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":139,"name":"Копадихромис каданго (4-5 см)","price":185,"pack_size":8,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":140,"name":"Лабидохромис йеллоу (4 см)","price":195,"pack_size":8,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":141,"name":"Меланохромис йохани (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":142,"name":"Нимбохромис золотой леопард (3,5 см)","price":110,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":143,"name":"Псевдотрофеус зебра красная (4 см)","price":150,"pack_size":8,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":144,"name":"Псевдотрофеус снежный принц (3 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":145,"name":"Трофеус звездчатый (2 см)","price":310,"pack_size":4,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":146,"name":"Фронтоза (2,5-3 см)","price":310,"pack_size":4,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":147,"name":"Хаплохромис голубой дельфин (5 см)","price":195,"pack_size":6,"min_batch":null,"cat":"Цихлиды","img":"discus","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":148,"name":"Скалярия ассорти (7-8 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Цихлиды","img":"angel","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":149,"name":"Скалярия золотой мрамор (3 см)","price":45,"pack_size":20,"min_batch":null,"cat":"Цихлиды","img":"angel","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":150,"name":"Скалярия кои (3 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Цихлиды","img":"angel","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":151,"name":"Скалярия призрак (3 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Цихлиды","img":"angel","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":152,"name":"Скалярия черная (3 см)","price":105,"pack_size":20,"min_batch":null,"cat":"Цихлиды","img":"angel","desc":"Цихлида с характером. Нужны укрытия, стабильная вода и продуманные соседи."},{"num":153,"name":"Гурами гигантский золотой (6-7 см)","price":450,"pack_size":3,"min_batch":null,"cat":"Гурами","img":"gourami","desc":"Спокойная лабиринтовая рыба. Держится в верхних слоях и дышит атмосферным воздухом."},{"num":154,"name":"Гурами карликовый искрящийся (3 см)","price":60,"pack_size":30,"min_batch":null,"cat":"Гурами","img":"gourami","desc":"Спокойная лабиринтовая рыба. Держится в верхних слоях и дышит атмосферным воздухом."},{"num":155,"name":"Гурами медовый золотой (3 см)","price":155,"pack_size":10,"min_batch":null,"cat":"Гурами","img":"gourami","desc":"Спокойная лабиринтовая рыба. Держится в верхних слоях и дышит атмосферным воздухом."},{"num":156,"name":"Гурами медовый красный (4 см)","price":150,"pack_size":10,"min_batch":null,"cat":"Гурами","img":"gourami","desc":"Спокойная лабиринтовая рыба. Держится в верхних слоях и дышит атмосферным воздухом."},{"num":157,"name":"Гурами мраморный (5 см)","price":60,"pack_size":20,"min_batch":null,"cat":"Гурами","img":"gourami","desc":"Спокойная лабиринтовая рыба. Держится в верхних слоях и дышит атмосферным воздухом."},{"num":158,"name":"Гурами синяя линия (2 см)","price":185,"pack_size":10,"min_batch":null,"cat":"Гурами","img":"gourami","desc":"Спокойная лабиринтовая рыба. Держится в верхних слоях и дышит атмосферным воздухом."},{"num":159,"name":"Ктенопома леопардовая (2 см)","price":220,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":160,"name":"Лябиоза сансет (3-3,5 см)","price":210,"pack_size":8,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":161,"name":"Лялиус (4 см)","price":240,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":162,"name":"Лялиус кобальтовый (4 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":163,"name":"Лялиус красный (4 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":164,"name":"Макропод (3-4 см)","price":175,"pack_size":10,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":165,"name":"Петушок самки супердельта (4 см)","price":150,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":166,"name":"Петушок двухвостый (4 см)","price":190,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":167,"name":"Петушок кои желтый (4-5 см)","price":600,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":168,"name":"Петушок коронохвостый (4 см)","price":150,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":169,"name":"Петушок слоноухий (4 см)","price":300,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":170,"name":"Петушок супердельта (4 см)","price":190,"pack_size":null,"min_batch":null,"cat":"Лабиринтовые","img":"gourami","desc":"Лабиринтовая рыба. Дышит атмосферным воздухом, любит спокойную воду."},{"num":171,"name":"Акулий балу (6,5 см)","price":185,"pack_size":6,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":172,"name":"Гарра руфа (3 см)","price":75,"pack_size":20,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":173,"name":"Гарра флаватра (2,5 см)","price":175,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":174,"name":"Гастромизон ктеноцефалус (3 см)","price":200,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":175,"name":"Гастромизон майерси (3-4 см)","price":210,"pack_size":5,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":176,"name":"Гастромизон оцеллятус (3-4 см)","price":320,"pack_size":5,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":177,"name":"Гиринохейл золотой (5-6 см)","price":120,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":178,"name":"Гиринохейл черно золотой (6-7 см)","price":105,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":179,"name":"Лабео биколор (4 см)","price":125,"pack_size":10,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":180,"name":"Миксоципринус (парусник) (5-6 см)","price":460,"pack_size":2,"min_batch":null,"cat":"Сомы и донные","img":"cory","desc":"Донная рыба. Подбирает остатки корма и помогает держать аквариум чистым."},{"num":181,"name":"Севелия линеолата (2-2,5 см)","price":250,"pack_size":5,"min_batch":null,"cat":"Прочее","img":"plant","desc":"Живой обитатель для аквариума. Уточните совместимость с вашими рыбками."}];
 const CATS = ["Все","Барбусы","Гурами","Харациновые","Апистограммы","Сомы и донные","Живородки","Золотые рыбки","Цихлиды","Лабиринтовые","Креветки","Растения","Прочее"];
-const COLORS = {
-  "Барбусы":["#ffe7d6","#ffb27a"],"Гурами":["#e3e0ff","#9d95ff"],"Харациновые":["#dff3ff","#7cc8ff"],
-  "Апистограммы":["#ffe3ef","#ff9dc1"],"Сомы и донные":["#e8e2d8","#c2a98a"],"Живородки":["#e0f7ea","#73d6a2"],
-  "Золотые рыбки":["#fff0cc","#ffc95c"],"Цихлиды":["#e2f0ff","#74a9ff"],"Лабиринтовые":["#ffe6f0","#ff9ac4"],
-  "Креветки":["#ffe1dc","#ff9a88"],"Растения":["#e2f5df","#83cf78"],"Прочее":["#e9edf3","#a9b6c8"]
-};
-const FISH = '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C11 8 28 4 41 11l13-8v34l-13-8C28 36 11 32 4 20z"/><circle cx="19" cy="18" r="1.8" fill="currentColor" stroke="none"/><path d="M29 12c3 4 3 12 0 16"/></svg>';
-const state = {cat:"Все", q:"", cart:{}, limit:12};
+const state = {cat:"Все", q:"", cart:{}, limit:10, page:"catalog", product:null, tab:"all", pqty:1, favs:{}};
 try { state.cart = JSON.parse(localStorage.getItem("fish-cart")||"{}") } catch(e) { state.cart = {} }
+try { state.favs = JSON.parse(localStorage.getItem("fish-favs")||"{}") } catch(e) { state.favs = {} }
 const $ = (s) => document.querySelector(s);
-const fmt = (n) => n.toLocaleString("ru-RU") + " ₽";
-const pack = (i) => i.pack_size ? `упак. ${i.pack_size}` : "поштучно";
-const catColor = (c) => COLORS[c] || COLORS["Прочее"];
+const fmt = (n) => Math.round(n).toLocaleString("ru-RU") + " ₽";
 const qty = (num) => Number(state.cart[num]||0);
-const total = () => ITEMS.reduce((s,i)=>s + qty(i.num)*i.price,0);
 const count = () => Object.values(state.cart).reduce((s,n)=>s+Number(n||0),0);
-
-function save(){ localStorage.setItem("fish-cart", JSON.stringify(state.cart)) }
-function setQty(num,n){ if(n<=0) delete state.cart[num]; else state.cart[num]=n; save(); render(); renderCart(); }
-
-function renderCats(){
-  $("#cats").innerHTML = CATS.map(c=>`<button class="chip ${state.cat===c?"on":""}" data-cat="${c}">${c}</button>`).join("");
-  $("#cats").querySelectorAll(".chip").forEach(b=>b.onclick=()=>{state.cat=b.dataset.cat; state.limit=12; render(); renderCats();});
-}
-function filtered(){
-  const q=state.q.trim().toLowerCase();
-  return ITEMS.filter(i=>(state.cat==="Все"||i.cat===state.cat) && (!q || i.name.toLowerCase().includes(q) || String(i.num).includes(q)));
-}
-function card(i){
-  const [a,b]=catColor(i.cat);
-  const n=qty(i.num);
-  return `<article class="card">
-    <div class="art" style="background:linear-gradient(135deg,${a},${b});color:#0a2540">
-      <span class="num">№ ${i.num}</span><span class="pack">${pack(i)}</span>${FISH}
-    </div>
-    <div class="body">
-      <div class="name">${i.name}</div>
-      <div class="bottom">
-        <div class="price">${i.price}<span>₽ / шт</span></div>
-        ${n ? `<div class="stepper"><button data-minus="${i.num}">−</button><b>${n}</b><button data-plus="${i.num}">+</button></div>` : `<button class="add" data-plus="${i.num}" aria-label="Добавить">+</button>`}
-      </div>
-    </div>
-  </article>`;
-}
-function render(){
+const goods = () => ITEMS.reduce((s,i)=>s + qty(i.num)*i.price,0);
+const fee = (g) => Math.round(g*0.15);
+function saveCart(){ localStorage.setItem("fish-cart", JSON.stringify(state.cart)) }
+function setQty(num,n){ if(n<=0) delete state.cart[num]; else state.cart[num]=n; saveCart(); renderAll(); }
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("on"),1200) }
+function show(page){ state.page=page; document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on")); const el=$("#scr-"+page); if(el) el.classList.add("on"); document.querySelectorAll(".tb").forEach(b=>b.classList.toggle("on", b.dataset.tabBtn===page)); window.scrollTo({top:0,behavior:"instant"}); }
+function go(page){ show(page); if(page==="cart") renderCart(); if(page==="orders") renderOrders(); }
+function fmtWord(n){ return n%10===1 && n%100!==11 ? "позиция" : (n%10>=2&&n%10<=4&&(n%100<10||n%100>=20) ? "позиции" : "позиций") }
+function filtered(){ const q=state.q.trim().toLowerCase(); return ITEMS.filter(i=>(state.cat==="Все"||i.cat===state.cat)&&(!q||i.name.toLowerCase().includes(q)||String(i.num).includes(q))) }
+function itemCard(i){ const n=qty(i.num); return `<article class="item" data-open="${i.num}">
+  <img class="thumb" src="img/${i.img}.jpg?v=3" alt="" loading="lazy">
+  <div class="iteminfo"><div class="itemname">${i.name}</div><div class="itemmeta">№ ${i.num}${i.pack_size?` · упак. ${i.pack_size}`:""}</div></div>
+  <div class="itemright"><div class="price">${i.price}<span>₽</span></div>${n?`<div class="stepper"><button data-minus="${i.num}">−</button><b>${n}</b><button data-plus="${i.num}">+</button></div>`:`<button class="plus" data-plus="${i.num}" aria-label="Добавить">+</button>`}</div>
+</article>` }
+function renderCatalog(){
+  $("#cats").innerHTML=CATS.map(c=>`<button class="chip ${state.cat===c?"on":""}" data-cat="${c}">${c}</button>`).join("");
+  $("#cats").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{state.cat=b.dataset.cat;state.limit=10;renderCatalog()});
   const list=filtered(); const part=list.slice(0,state.limit);
-  const word = list.length%10===1 && list.length%100!==11 ? "позиция" : (list.length%10>=2 && list.length%10<=4 && (list.length%100<10 || list.length%100>=20) ? "позиции" : "позиций");
-  $("#shown").textContent=list.length; $("#shownWord").textContent=word;
-  $("#grid").innerHTML = part.length ? part.map(card).join("") + (list.length>part.length?`<button class="more" id="more">Показать ещё ${Math.min(12,list.length-part.length)}</button>`:"") : `<div class="empty">Ничего не нашлось.<br>Попробуйте другое название или номер.</div>`;
-  $("#grid").querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.plus),qty(Number(b.dataset.plus))+1));
-  $("#grid").querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.minus),qty(Number(b.dataset.minus))-1));
-  const m=$("#more"); if(m) m.onclick=()=>{state.limit+=12;render()};
-  renderBar();
+  $("#shown").textContent=list.length; $("#shownWord").textContent=fmtWord(list.length);
+  $("#list").innerHTML=part.length?part.map(itemCard).join("")+(list.length>part.length?`<button class="more" id="more">Показать ещё (${Math.min(10,list.length-part.length)})</button>`:""):`<div class="empty">Ничего не нашлось.<br>Попробуйте другое название или номер.</div>`;
+  $("#list").querySelectorAll("[data-open]").forEach(el=>el.onclick=(e)=>{if(e.target.closest("button"))return;openProduct(Number(el.dataset.open))});
+  $("#list").querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>{setQty(Number(b.dataset.plus),qty(Number(b.dataset.plus))+1);toast("Добавлено в корзину")});
+  $("#list").querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.minus),qty(Number(b.dataset.minus))-1));
+  const m=$("#more"); if(m)m.onclick=()=>{state.limit+=10;renderCatalog()};
 }
-function renderBar(){
-  const c=count(), t=total();
-  $("#bar").classList.toggle("hide",c===0);
-  $("#barCount").textContent=c; $("#barTotal").textContent=fmt(t);
-}
+function openProduct(num){ const i=ITEMS.find(x=>x.num===num); if(!i)return; state.product=i; state.pqty=Math.max(1,qty(num)); $("#pimg").src=`img/${i.img}.jpg?v=3`; $("#pimg").alt=i.name; $("#pname").textContent=i.name; $("#pprice").textContent=i.price; $("#ppack").textContent=i.pack_size?`упак. ${i.pack_size}`:"поштучно"; $("#pdesc").textContent=i.desc; $("#pqty").textContent=state.pqty; $("#pfav").classList.toggle("on",!!state.favs[i.num]);
+  const size=(i.name.match(/\(([^)]+)\)/)||[])[1]||"—";
+  $("#pspecs").innerHTML=`<div class="spec"><span>Размер</span><b>${size}</b></div><div class="spec"><span>Упаковка</span><b>${i.pack_size?i.pack_size+" шт":"поштучно"}</b></div><div class="spec"><span>Наличие</span><b>Сбор открыт</b></div>`;
+  const sim=ITEMS.filter(x=>x.cat===i.cat&&x.num!==i.num).slice(0,6);
+  $("#psimilar").innerHTML=sim.map(x=>`<button class="sim" data-sim="${x.num}"><img src="img/${x.img}.jpg?v=5" alt=""><div class="n">${x.name}</div><div class="p">${x.price} ₽</div></button>`).join("");
+  $("#psimilar").querySelectorAll("[data-sim]").forEach(b=>b.onclick=()=>openProduct(Number(b.dataset.sim)));
+  go("product"); }
+function renderProductQty(){ $("#pqty").textContent=state.pqty }
 function renderCart(){
   const lines=ITEMS.filter(i=>qty(i.num)>0);
-  $("#cartLines").innerHTML = lines.length ? lines.map(i=>{
-    const [a,b]=catColor(i.cat); const n=qty(i.num);
-    return `<div class="cline"><div class="thumb" style="background:linear-gradient(135deg,${a},${b});color:#0a2540">${FISH}</div><div class="info"><b>${i.name}</b><span>${i.price} ₽ × ${n}</span></div><div class="stepper"><button data-minus="${i.num}">−</button><b>${n}</b><button data-plus="${i.num}">+</button></div><div class="sum">${fmt(i.price*n)}</div></div>`;
-  }).join("") : `<div class="empty" style="padding:26px 10px">Корзина пуста</div>`;
-  const goods=total(), fee=Math.round(goods*0.15);
-  $("#cartSummary").innerHTML = lines.length ? `<div class="srow"><span>Товары</span><b>${fmt(goods)}</b></div><div class="srow"><span>Сбор 15%</span><b>${fmt(fee)}</b></div><div class="srow total"><span>Итого</span><b>${fmt(goods+fee)}</b></div>` : "";
-  $("#checkout").style.display=lines.length?"block":"none";
-  $("#cartLines").querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.plus),qty(Number(b.dataset.plus))+1));
-  $("#cartLines").querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.minus),qty(Number(b.dataset.minus))-1));
+  $("#cartlines").innerHTML=lines.length?lines.map(i=>{const n=qty(i.num);return `<div class="cline"><img src="img/${i.img}.jpg?v=3" alt=""><div><div class="cname">${i.name}</div><div class="cmeta">${i.price} ₽ × ${n}</div></div><div class="cright"><div class="csum">${fmt(i.price*n)}</div><div class="stepper"><button data-minus="${i.num}">−</button><b>${n}</b><button data-plus="${i.num}">+</button></div><button class="trash" data-del="${i.num}">Удалить</button></div></div>`}).join(""):`<div class="empty">Корзина пуста.<br>Добавьте рыбу из каталога.</div>`;
+  const g=goods(), f=fee(g);
+  $("#cartsum").innerHTML=lines.length?`<div class="fee"><div class="pct">%</div><div class="t">Сбор 15%<span>организатору и перекупу</span></div><b>${fmt(f)}</b></div><div class="total"><span>Итого</span><b>${fmt(g+f)}</b></div>`:"";
+  $("#cartactions").innerHTML=lines.length?`<button class="primary" id="checkout">Оформить заказ</button><button class="ghost" data-go="catalog">Добавить ещё</button>`:`<button class="ghost" data-go="catalog">В каталог</button>`;
+  $("#cartlines").querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.plus),qty(Number(b.dataset.plus))+1));
+  $("#cartlines").querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.minus),qty(Number(b.dataset.minus))-1));
+  $("#cartlines").querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>setQty(Number(b.dataset.del),0));
+  const co=$("#checkout"); if(co)co.onclick=checkout;
+  document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+  renderBadge();
 }
-$("#q").addEventListener("input",e=>{state.q=e.target.value; state.limit=12; render()});
-$("#barGo").onclick=()=>{renderCart();$("#sheet").classList.add("on")};
-$("#close").onclick=()=>$("#sheet").classList.remove("on");
-$("#sheet").onclick=e=>{if(e.target===$("#sheet"))$("#sheet").classList.remove("on")};
-$("#checkout").onclick=()=>{$("#done").classList.add("on")};
-$("#doneClose").onclick=()=>{$("#done").classList.remove("on");$("#sheet").classList.remove("on");state.cart={};save();render();renderCart()};
-renderCats();render();renderCart();
-if (new URLSearchParams(location.search).get("demo")==="cart") {
-  state.cart={1:2,2:1,4:3}; save(); render(); renderCart();
-  setTimeout(()=>{document.querySelector("#sheet").classList.add("on")},50);
+function renderBadge(){ const c=count(); const b=$("#badge"); b.textContent=c; b.style.display=c?"grid":"none" }
+function renderAll(){ renderCatalog(); renderBadge(); if(state.page==="cart")renderCart(); }
+const DEMO_ORDERS=[
+ {city:"Красноярск",num:"№15",sum:18239,status:"Собирается",kind:"purple"},
+ {city:"Челябинск",num:"№2",sum:5635,status:"Оплачен",kind:"green"},
+ {city:"Оренбург",num:"№11",sum:4170.50,status:"доставка",kind:"blue"},
+];
+function renderOrders(){
+  document.querySelectorAll("#tabs .tab").forEach(b=>b.classList.toggle("on",b.dataset.tab===state.tab));
+  $("#orders").innerHTML=DEMO_ORDERS.map(o=>`<div class="order"><div><div class="city">${o.city}</div><div class="num">${o.num} · ${fmt(o.sum)}</div></div><div class="right"><div class="sum">${fmt(o.sum)}</div><span class="pill ${o.kind}">${o.status}</span></div><div class="chev">›</div></div>`).join("")+`<div class="foot" style="padding:6px 0">Это демо-заказы. В рабочей версии здесь будут ваши заказы из бота.</div>`;
 }
+function checkout(){
+  const g=goods(), f=fee(g), total=g+f;
+  if(!total)return;
+  $("#successSum").textContent=`№15 · ${fmt(total)}`;
+  $("#success").classList.add("on");
+}
+function renderProductFav(){ $("#pfav").classList.toggle("on",!!state.favs[state.product?.num]) }
+$("#pfav").onclick=()=>{ if(!state.product)return; state.favs[state.product.num]=!state.favs[state.product.num]; try{localStorage.setItem("fish-favs",JSON.stringify(state.favs))}catch(e){} renderProductFav() };
+$("#pplus").onclick=()=>{state.pqty++;renderProductQty()};
+$("#pminus").onclick=()=>{state.pqty=Math.max(1,state.pqty-1);renderProductQty()};
+$("#padd").onclick=()=>{if(!state.product)return;setQty(state.product.num,qty(state.product.num)+state.pqty);toast("Добавлено в корзину");go("catalog")};
+$("#successClose").onclick=()=>{ $("#success").classList.remove("on"); state.cart={};saveCart();renderAll();go("catalog") };
+$("#q").addEventListener("input",e=>{state.q=e.target.value;state.limit=10;renderCatalog()});
+document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{ if(state.page==="product")go("catalog"); else go("catalog") });
+document.querySelectorAll("[data-tab-btn]").forEach(b=>b.onclick=()=>go(b.dataset.tabBtn));
+document.querySelectorAll("#tabs .tab").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;renderOrders()});
+document.querySelectorAll("[data-tab-jump]").forEach(b=>b.onclick=()=>go(b.dataset.tabJump));
+const demo=new URLSearchParams(location.search).get("demo");
+if(demo==="cart"){ state.cart={4:20,24:20,79:20}; saveCart(); renderAll(); setTimeout(()=>go("cart"),40) }
+else if(demo==="product"){ state.cart={4:20,24:20,79:20}; saveCart(); renderAll(); setTimeout(()=>{openProduct(4);state.pqty=1;renderProductQty()},40) }
+else if(demo==="orders"){ renderAll(); setTimeout(()=>go("orders"),40) }
+else if(demo==="success"){ state.cart={4:20,24:20,79:20,80:20,125:15,126:6}; saveCart(); renderAll(); setTimeout(()=>{go("cart");checkout()},80) }
+else { renderAll() }
 </script>
 </body>
 </html>
